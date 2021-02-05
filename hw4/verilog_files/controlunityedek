@@ -1,0 +1,10 @@
+and (alu_op[0],not_op5,not_op4,not_op3,op[2],not_op1,not_op0); // op[2] becouse of sub for branch
+and (alu_op[1],not_op5,not_op4,not_op3,not_op2,not_op1,not_op0);
+and (RegDst,not_op5,not_op4,not_op3,not_op2,not_op1,not_op0);
+and (MemToReg,op[5],not_op4,not_op3,not_op2,op[1],op[0]); //lw 100011
+and (MemRead,op[5],not_op4,not_op3,not_op2,op[1],op[0]); // lw 100011
+and (MemWrite,op[5],not_op4,op[3],not_op2,op[1],op[0]); //sw 101011
+and (Branch,not_op5,not_op4,not_op3,op[2],not_op1,not_op0); // branch 000100
+and (AluSrc,op[5],not_op4,not_op2,op[1],op[0]); // the places where lw and sw bits are equal
+or  (RegWrite,MemRead,alu_op[1]); // lw + r type
+and (RegWrite2,not_op5,not_op4,not_op3,not_op2,not_op1,not_op0); // for writing to rs

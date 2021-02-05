@@ -1,0 +1,15 @@
+/*
+and (and1,func[5],not_f4,not_f3,func[2],not_f1,not_f0); //and
+and (and2,func[5],not_f4,not_f3,func[2],not_f1,func[0]); //or
+and (and3,func[5],not_f4,not_f3,not_f2,not_f1,not_f0); // add
+and (and4,func[5],not_f4,not_f3,not_f2,func[1],not_f0); // sub
+and (and5,func[5],not_f4,not_f3,func[2],func[1],not_f0); //xor
+
+or (or0,and2,and5); // becouse orn 001 and xorn 111 last bits 1
+or (or1,and3,and4,and5); // becouse addn 010 subn 110 and xorn 111 middle bit is 1
+or (or2,and4,and5); // becouse subn 110  and xorn 111 first bit is 1
+
+mux2x1 m0(op[0],1'b0,or0,alu_op[1]);
+mux2x1 m1(op[1],1'b1,or1,alu_op[1]);
+mux2x1 m2(op[2],alu_op[0],or2,alu_op[1]);   // this part for beq , bne, lw,sw
+*/
